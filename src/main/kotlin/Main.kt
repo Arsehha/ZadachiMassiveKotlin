@@ -8,14 +8,14 @@ fun main(){
         Array(5){
             (1..9).random()
         }
-    }
+    } //создание двухмерного массива и заполнение его случайными числыми от 1 до 9
     print("Массив:")
     for(i in 0 .. 4){
         println()
         for (j in 0 .. 4){
             print("${arrayM[i][j]} \t")
         }
-    }
+    }//вывод двухмерного массива
     println()
 
     var yes=true
@@ -30,7 +30,7 @@ fun main(){
             if(yes==false)
                 break
         }
-    }
+    }//проверка на симметричность
     if(yes==true){
         print("Массив симметричен")
     }
