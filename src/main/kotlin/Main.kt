@@ -14,20 +14,20 @@ fun main(args: Array<String>) {
         Array(logss){
             (100..999).random()
         }
-    }
+    }//создание двухмерного массива и заполнение его случайными числами
     var stringss:String =""
     for (i in 0 .. string-1) {
         for (j in 0..logss-1) {
             stringss += ArrayF[i][j].toString()
         }
-    }
+    }//запись всех чисел из массива в одну строчку
 
     for (i in 0 .. string-1) {
         println()
         for (j in 0..logss-1) {
             print(ArrayF[i][j].toString()+"\t")
         }
-    }
+    }//вывод массива
     println()
-    println("В массиве использовано ${stringss.toSet().size} различных цифр")
+    println("В массиве использовано ${stringss.toSet().size} различных цифр")//вывод количества всех уникальных элементов строки
 }
