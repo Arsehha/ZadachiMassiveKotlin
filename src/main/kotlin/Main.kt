@@ -1,28 +1,32 @@
-//1 zadacha
-fun main(args: Array<String>) {
-    print("Введите количество строк: ")
-    val string = readln().toInt()
-    print("Введите количество столбцов: ")
-    val logss = readln().toInt()
+/*
+Создать приложение, в котором пользователь вводит массив из различных слов.
+На выходе приложение должно показать слова сгруппированные по признаку "состоят из одинаковых букв".
+Например, на входе ["eat", "tea", "tan", "ate", "nat", "bat"]. Получаем группы:
+"ate", "eat", "tea"
+"nat", "tan"
+"bat"
+*/
 
-    val ArrayF: Array<Array<Int>> = Array(string){
-        Array(logss){
-            (100..999).random()
+fun main() {
+    print("Enter words >>> ")
+    val input = readln().split(' ')
+    val result = mutableMapOf<String, MutableList<String>>()
+
+    for (word in input) {
+        val chars = word.toList().distinct().sorted().toString()
+        val list = result[chars]
+        if (list == null) {
+            result[chars] = mutableListOf(word)
+        }
+        else {
+            list.add(word)
         }
     }
-    var stringss:String =""
-    for (i in 0 .. string-1) {
-        for (j in 0..logss-1) {
-            stringss += ArrayF[i][j].toString()
-        }
-    }
 
-    for (i in 0 .. string-1) {
+    for (group in result.values) {
+        for (word in group) {
+            print("$word \t")
+        }
         println()
-        for (j in 0..logss-1) {
-            print(ArrayF[i][j].toString()+"\t")
-        }
     }
-    println()
-    println("В массиве использовано ${stringss.toSet().size} различных цифр")
 }
