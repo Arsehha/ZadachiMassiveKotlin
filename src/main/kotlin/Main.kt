@@ -5,42 +5,26 @@
 Число 2 в одном массиве повторялось два раза, в другом - три.
 Значит в итоговом массиве число два должно быть два раза*/
 
-fun main(){
-    print("Введите размерность первого массива:")
-    val countMas1 = readln().toInt()
-    print("Введите размерность второго массива:")
-    val countMas2 = readln().toInt()
+fun main() {
+    print("Enter words >>> ")
+    val input = readln().split(' ')
+    val result = mutableMapOf<String, MutableList<String>>()
 
-    val arrayOne: Array<Int> = Array(countMas1){0}//объявление одномерного массива один
-    val arrayTwo: Array<Int> = Array(countMas2){0}//объявление одномерного массива два
-
-    for(i in 0 ..countMas1-1){
-        print("Первый массив ячейка ${i+1} = ")
-        arrayOne[i]= readln().toInt()
-    }//ручное заполнение массива один
-
-    println()
-    for(i in 0 ..countMas2-1){
-        print("Первый массив ячейка ${i+1} = ")
-        arrayTwo[i]= readln().toInt()
-    }//ручное заполнение массива два
-
-    println()
-    println("Массив один:")
-    for(i in 0 ..countMas1-1){
-        print("${arrayOne[i]} \t")
+    for (word in input) {
+        val chars = word.toList().distinct().sorted().toString()
+        val list = result[chars]
+        if (list == null) {
+            result[chars] = mutableListOf(word)
+        }
+        else {
+            list.add(word)
+        }
     }
 
-    println()
-    println("Массив два:")
-    for(i in 0 ..countMas2-1){
-        print("${arrayTwo[i]} \t")
+    for (group in result.values) {
+        for (word in group) {
+            print("$word \t")
+        }
+        println()
     }
-
-    val common = arrayOne.toMutableList()
-    common.retainAll(arrayTwo)
-    common.sort()
-
-    println()
-    println(common)
 }
